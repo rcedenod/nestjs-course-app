@@ -12,12 +12,16 @@ export declare class ProfilesService {
         id: `${string}-${string}-${string}-${string}-${string}`;
         name: string;
         description: string;
-    } | undefined;
+    };
     createProfile(createProfileDTO: CreateProfileDTO): {
         name: string;
         description: string;
         id: `${string}-${string}-${string}-${string}-${string}`;
     };
-    updateProfile(id: UUID, updateProfileDTO: UpdateProfileDTO): {};
+    updateProfile(id: UUID, updateProfileDTO: UpdateProfileDTO): {
+        id: `${string}-${string}-${string}-${string}-${string}`;
+        name: string;
+        description: string;
+    };
     deleteProfile(id: UUID): {};
 }

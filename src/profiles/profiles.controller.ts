@@ -1,4 +1,4 @@
-import { Controller, Get, Query, Param, Post, Body, Put, Delete, HttpCode, HttpStatus} from '@nestjs/common';
+import { Controller, Get, Param, Post, Body, Put, Delete, HttpCode, HttpStatus, NotFoundException} from '@nestjs/common';
 import { CreateProfileDTO } from './dto/create-profile.dto';
 import { UpdateProfileDTO } from './dto/update-profile.dto';
 import { ProfilesService } from './profiles.service';
@@ -17,6 +17,7 @@ export class ProfilesController {
     @Get(':id') // sin query param 
     getProfileById(@Param('id') id: UUID) {
         return this.profilesService.getProfileById(id);
+        // throw new NotFoundException();
     }
 
     @Post()
@@ -35,7 +36,7 @@ export class ProfilesController {
 
     @Delete(':id')
     @HttpCode(HttpStatus.NO_CONTENT)
-    removeProfile(@Param('id') id: UUID) {
+    deleteProfile(@Param('id') id: UUID) {
         return this.profilesService.deleteProfile(id);
     }
 }

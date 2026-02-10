@@ -34,7 +34,7 @@ let ProfilesController = class ProfilesController {
     updateProfile(id, updateProfileDTO) {
         return this.profilesService.updateProfile(id, updateProfileDTO);
     }
-    removeProfile(id) {
+    deleteProfile(id) {
         return this.profilesService.deleteProfile(id);
     }
 };
@@ -75,7 +75,7 @@ __decorate([
     __metadata("design:type", Function),
     __metadata("design:paramtypes", [String]),
     __metadata("design:returntype", void 0)
-], ProfilesController.prototype, "removeProfile", null);
+], ProfilesController.prototype, "deleteProfile", null);
 exports.ProfilesController = ProfilesController = __decorate([
     (0, common_1.Controller)('profiles'),
     __metadata("design:paramtypes", [profiles_service_1.ProfilesService])

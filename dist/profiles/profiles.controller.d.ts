@@ -14,12 +14,16 @@ export declare class ProfilesController {
         id: `${string}-${string}-${string}-${string}-${string}`;
         name: string;
         description: string;
-    } | undefined;
+    };
     createProfile(createProfileDTO: CreateProfileDTO): {
         name: string;
         description: string;
         id: `${string}-${string}-${string}-${string}-${string}`;
     };
-    updateProfile(id: UUID, updateProfileDTO: UpdateProfileDTO): {};
-    removeProfile(id: UUID): {};
+    updateProfile(id: UUID, updateProfileDTO: UpdateProfileDTO): {
+        id: `${string}-${string}-${string}-${string}-${string}`;
+        name: string;
+        description: string;
+    };
+    deleteProfile(id: UUID): {};
 }
