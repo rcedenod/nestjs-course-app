@@ -29,18 +29,14 @@ let ProfilesController = class ProfilesController {
         return this.profilesService.getProfileById(id);
     }
     createProfile(createProfileDTO) {
-        return {
-            name: createProfileDTO.name,
-            description: createProfileDTO.description
-        };
+        return this.profilesService.createProfile(createProfileDTO);
     }
     updateProfile(id, updateProfileDTO) {
-        return {
-            id: id,
-            ...updateProfileDTO
-        };
+        return this.profilesService.updateProfile(id, updateProfileDTO);
     }
-    removeProfile(id) { }
+    removeProfile(id) {
+        return this.profilesService.deleteProfile(id);
+    }
 };
 exports.ProfilesController = ProfilesController;
 __decorate([
@@ -58,6 +54,7 @@ __decorate([
 ], ProfilesController.prototype, "getProfileById", null);
 __decorate([
     (0, common_1.Post)(),
+    (0, common_1.HttpCode)(common_1.HttpStatus.CREATED),
     __param(0, (0, common_1.Body)()),
     __metadata("design:type", Function),
     __metadata("design:paramtypes", [create_profile_dto_1.CreateProfileDTO]),

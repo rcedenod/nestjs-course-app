@@ -18,11 +18,8 @@ export declare class ProfilesController {
     createProfile(createProfileDTO: CreateProfileDTO): {
         name: string;
         description: string;
+        id: `${string}-${string}-${string}-${string}-${string}`;
     };
-    updateProfile(id: string, updateProfileDTO: UpdateProfileDTO): {
-        name: string;
-        description: string;
-        id: string;
-    };
-    removeProfile(id: string): void;
+    updateProfile(id: UUID, updateProfileDTO: UpdateProfileDTO): {};
+    removeProfile(id: UUID): {};
 }

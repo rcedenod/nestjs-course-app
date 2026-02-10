@@ -33,7 +33,31 @@ let ProfilesService = class ProfilesService {
     getProfileById(id) {
         return this.profiles.find((profile) => profile.id === id);
     }
-    createProfile() { }
+    createProfile(createProfileDTO) {
+        const createdProfile = {
+            id: (0, crypto_1.randomUUID)(),
+            ...createProfileDTO
+        };
+        this.profiles.push(createdProfile);
+        return createdProfile;
+    }
+    updateProfile(id, updateProfileDTO) {
+        const matchingProfile = this.profiles.find((existingProfile) => existingProfile.id === id);
+        if (!matchingProfile) {
+            return {};
+        }
+        matchingProfile.name = updateProfileDTO.name;
+        matchingProfile.description = updateProfileDTO.description;
+        return matchingProfile;
+    }
+    deleteProfile(id) {
+        const matchingProfileIndex = this.profiles.findIndex((existingProfile) => existingProfile.id === id);
+        if (matchingProfileIndex > -1) {
+            this.profiles.splice(matchingProfileIndex, 1);
+        }
+        ;
+        return {};
+    }
 };
 exports.ProfilesService = ProfilesService;
 exports.ProfilesService = ProfilesService = __decorate([
