@@ -26,7 +26,12 @@ let ProfilesController = class ProfilesController {
         return this.profilesService.getAllProfiles();
     }
     getProfileById(id) {
-        return this.profilesService.getProfileById(id);
+        try {
+            return this.profilesService.getProfileById(id);
+        }
+        catch (error) {
+            throw new common_1.NotFoundException(error.message);
+        }
     }
     createProfile(createProfileDTO) {
         return this.profilesService.createProfile(createProfileDTO);
@@ -47,7 +52,7 @@ __decorate([
 ], ProfilesController.prototype, "getProfiles", null);
 __decorate([
     (0, common_1.Get)(':id'),
-    __param(0, (0, common_1.Param)('id')),
+    __param(0, (0, common_1.Param)('id', common_1.ParseUUIDPipe)),
     __metadata("design:type", Function),
     __metadata("design:paramtypes", [String]),
     __metadata("design:returntype", void 0)
@@ -62,7 +67,7 @@ __decorate([
 ], ProfilesController.prototype, "createProfile", null);
 __decorate([
     (0, common_1.Put)(':id'),
-    __param(0, (0, common_1.Param)('id')),
+    __param(0, (0, common_1.Param)('id', common_1.ParseUUIDPipe)),
     __param(1, (0, common_1.Body)()),
     __metadata("design:type", Function),
     __metadata("design:paramtypes", [String, update_profile_dto_1.UpdateProfileDTO]),
@@ -71,7 +76,7 @@ __decorate([
 __decorate([
     (0, common_1.Delete)(':id'),
     (0, common_1.HttpCode)(common_1.HttpStatus.NO_CONTENT),
-    __param(0, (0, common_1.Param)('id')),
+    __param(0, (0, common_1.Param)('id', common_1.ParseUUIDPipe)),
     __metadata("design:type", Function),
     __metadata("design:paramtypes", [String]),
     __metadata("design:returntype", void 0)
